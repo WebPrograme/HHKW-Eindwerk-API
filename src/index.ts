@@ -15,13 +15,13 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 
 // ROUTES
 // import archive from './routes/archive';
-// import blog from './routes/blog';
+import blog from './routes/blog';
 // import form from './routes/form';
 // import contact from './routes/contact';
 // import home from './routes/home';
 
 // app.use('/api/archive', archive);
-// app.use('/api/blog', blog);
+app.use('/api/blog', blog);
 // app.use('/api/form', form);
 // app.use('/api/contact', contact);
 // app.use('/api/home', home);
