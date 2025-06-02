@@ -38,4 +38,4 @@ type BlogEvent = {
 	Timestamp: number;
 };
 
-export { Output, BlogArticle, BlogEvent };
+export { Output, BlogArticle, BlogEvent, ArchiveArticle };
