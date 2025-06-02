@@ -3,6 +3,23 @@ type Output = {
 	result: any;
 };
 
+type ArchiveArticle = {
+	Title?: string;
+	Description?: { [key: string]: string };
+	Date?: {
+		Day?: string;
+		Month?: string;
+		Year?: string;
+	};
+	CreatedAt: string;
+	Image?: string;
+	HasOwnPage: boolean;
+	OnTimeline: boolean;
+	VroonhofTag: boolean;
+	ID: string;
+	Order: number;
+};
+
 type BlogArticle = {
 	Title: string;
 	Description: string;
