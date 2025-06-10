@@ -14,21 +14,17 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 });
 
 // ROUTES
-/* The line `// import archive from './routes/archive';` is a commented-out import statement in the
-TypeScript code. This means that the code is not currently importing the `archive` module from the
-`./routes/archive` file. The purpose of commenting out this line is to disable this import statement
-so that the `archive` module is not included in the application at the moment. */
 import archive from './routes/archive';
 import blog from './routes/blog';
-// import form from './routes/form';
-// import contact from './routes/contact';
-// import home from './routes/home';
+import form from './routes/form';
+import contact from './routes/contact';
+import home from './routes/home';
 
 app.use('/api/archive', archive);
 app.use('/api/blog', blog);
-// app.use('/api/form', form);
-// app.use('/api/contact', contact);
-// app.use('/api/home', home);
+app.use('/api/form', form);
+app.use('/api/contact', contact);
+app.use('/api/home', home);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

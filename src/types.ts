@@ -38,4 +38,29 @@ type BlogEvent = {
 	Timestamp: number;
 };
 
-export { Output, BlogArticle, BlogEvent, ArchiveArticle };
+type Form = {
+	Name: string;
+	Email: string;
+	Message: string;
+};
+
+type Section = {
+	ID: string;
+	Title: string;
+	Content: string[];
+	Timestamp: number;
+	CreatedAt: string;
+	Type: 'TextOnly' | 'TextWithImage';
+	Image?: string;
+	Order: number;
+};
+
+type HomeBlock = {
+	Order: number;
+	Title: string;
+	Description: string;
+	Image: string;
+	Link: string;
+};
+
+export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section };
