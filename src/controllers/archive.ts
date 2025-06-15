@@ -1,6 +1,7 @@
 import service from '../services/archive';
 import type { ArchiveArticle } from '../types';
 import { Request, Response } from 'express';
+import Log from '../log';
 require('dotenv').config();
 
 // Import the necessary environment variables
@@ -74,6 +75,9 @@ const addArticle = async (req: Request, res: Response) => {
 
 	await service.addArticle(article as ArchiveArticle);
 
+	// Log the addition of the article
+	await Log.addLog('Archief Artikel Toegevoegd', `Artikel met ID ${article.ID} is toegevoegd`, { article }, req);
+
 	res.status(200).send({ ID: article.ID }).end();
 };
 
@@ -98,6 +102,9 @@ const updateArticle = async (req: Request, res: Response) => {
 
 	await service.updateArticle(article);
 
+	// Log the update of the article
+	await Log.addLog('Archief Artikel Bijgewerkt', `Artikel met ID ${article.ID} is bijgewerkt`, { article }, req);
+
 	res.status(200).send({ ID: article.ID }).end();
 };
 
@@ -109,6 +116,9 @@ const deleteArticles = async (req: Request, res: Response) => {
 
 	// Update the order of the following articles
 	await service.resetOrder();
+
+	// Log the deletion of articles
+	await Log.addLog('Archief Artikelen Verwijderd', `Artikelen met IDs ${ids.join(', ')} zijn verwijderd`, { ids }, req);
 
 	res.status(200).send({ ID: ids }).end();
 };

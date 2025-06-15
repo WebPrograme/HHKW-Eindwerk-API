@@ -71,4 +71,12 @@ type Publication = {
 	CreatedAt: string;
 };
 
-export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section, Publication };
+type LogEntry = {
+	CreatedAt: string;
+	ExpiryDate: string;
+	Action: string;
+	Description: string;
+	DeepInfo?: Record<string, any>;
+};
+
+export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section, Publication, LogEntry };

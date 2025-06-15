@@ -2,6 +2,7 @@ import service from '../services/blog';
 import { cleanup } from '../helper';
 import type { BlogArticle, BlogEvent } from '../types';
 import { Request, Response } from 'express';
+import Log from '../log';
 require('dotenv').config();
 
 // Get All Articles
@@ -55,6 +56,9 @@ const addArticle = async (req: Request, res: Response) => {
 
 	await service.addArticle(article as BlogArticle);
 
+	// Log the addition of the article
+	await Log.addLog('Blog Artikel Toegevoegd', `Artikel met ID ${article.ID} is toegevoegd`, { article }, req);
+
 	res.status(200).send(article).end();
 };
 
@@ -72,6 +76,9 @@ const updateArticle = async (req: Request, res: Response) => {
 	article.Description = Object.assign({}, ...splittedDescription);
 	await service.updateArticle(article as BlogArticle);
 
+	// Log the update of the article
+	await Log.addLog('Blog Artikel Bijgewerkt', `Artikel met ID ${article.ID} is bijgewerkt`, { article }, req);
+
 	res.status(200).send(article).end();
 };
 
@@ -79,6 +86,9 @@ const updateArticle = async (req: Request, res: Response) => {
 const deleteArticles = async (req: Request, res: Response) => {
 	const ids: string[] = req.body.IDs;
 	await service.deleteArticles(ids);
+
+	// Log the deletion of the articles
+	await Log.addLog('Blog Artikelen Verwijderd', `Artikelen met IDs ${ids.join(', ')} zijn verwijderd`, { IDs: ids }, req);
 
 	res.status(200).send({ IDs: ids }).end();
 };
@@ -134,6 +144,9 @@ const addEvent = async (req: Request, res: Response) => {
 
 	await service.addEvent(event);
 
+	// Log the addition of the event
+	await Log.addLog('Blog Event Toegevoegd', `Event met ID ${event.ID} is toegevoegd`, event, req);
+
 	res.status(200).send(event).end();
 };
 
@@ -142,6 +155,9 @@ const updateEvent = async (req: Request, res: Response) => {
 	const event = req.body.Event;
 	await service.updateEvent(event);
 
+	// Log the update of the event
+	await Log.addLog('Blog Event Bijgewerkt', `Event met ID ${event.ID} is bijgewerkt`, event, req);
+
 	res.status(200).send(event).end();
 };
 
@@ -149,6 +165,9 @@ const updateEvent = async (req: Request, res: Response) => {
 const deleteEvents = async (req: Request, res: Response) => {
 	const ids: string[] = req.body.IDs;
 	await service.deleteEvents(ids);
+
+	// Log the deletion of the events
+	await Log.addLog('Blog Events Verwijderd', `Events met IDs ${ids.join(', ')} zijn verwijderd`, { IDs: ids }, req);
 
 	res.status(200).send({ IDs: ids }).end();
 };

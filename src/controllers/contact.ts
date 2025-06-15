@@ -2,6 +2,7 @@ import service from '../services/contact';
 import { cleanup } from '../helper';
 import type { Section } from '../types';
 import { Request, Response } from 'express';
+import Log from '../log';
 
 // Get All Sections
 const getAllSections = async (req: Request, res: Response) => {
@@ -44,6 +45,10 @@ const addSection = async (req: Request, res: Response) => {
 	}
 
 	await service.addSection(section as Section);
+
+	// Log the addition of the section
+	await Log.addLog('Sectie Toegevoegd', `Sectie met ID ${section.ID} is toegevoegd`, section, req);
+
 	res.status(200).send(section).end();
 };
 
@@ -71,6 +76,10 @@ const updateSection = async (req: Request, res: Response) => {
 	}
 
 	await service.updateSection(section.ID, section as Section);
+
+	// Log the update of the section
+	await Log.addLog('Sectie Bijgewerkt', `Sectie met ID ${section.ID} is bijgewerkt`, section, req);
+
 	res.status(200).send(section).end();
 };
 
@@ -80,6 +89,9 @@ const deleteSection = async (req: Request, res: Response) => {
 
 	// Update the order of the following articles
 	await service.resetOrder();
+
+	// Log the deletion of the section
+	await Log.addLog('Sectie Verwijderd', `Sectie met ID ${req.body.ID} is verwijderd`, req.body, req);
 
 	res.status(200).send({ Name: req.body.ID }).end();
 };

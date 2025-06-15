@@ -2,6 +2,7 @@ const admin = require('firebase-admin');
 const { initializeApp } = require('firebase/app');
 const { getAuth, signInWithCredential, GoogleAuthProvider } = require('firebase/auth');
 const { getDownloadURL, ref, uploadBytes, getStorage, uploadString } = require('firebase/storage');
+import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 require('dotenv').config();
 
 const firebaseConfig = {
@@ -32,8 +33,9 @@ admin.initializeApp({
 });
 
 const db = admin.database();
+const firestore = getFirestore();
 const firebaseAPP = initializeApp(firebaseConfig);
 const auth = admin.auth();
 const storage = getStorage(firebaseAPP);
 
-export { db, auth, storage, signInWithCredential, GoogleAuthProvider, getDownloadURL, ref, uploadBytes, uploadString, firebaseAPP };
+export { db, auth, storage, signInWithCredential, GoogleAuthProvider, getDownloadURL, ref, uploadBytes, uploadString, firebaseAPP, Timestamp, firestore };
