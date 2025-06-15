@@ -63,4 +63,12 @@ type HomeBlock = {
 	Link: string;
 };
 
-export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section };
+type Publication = {
+	ID: string;
+	Title: string;
+	CoverImage: string;
+	ContentFile: string;
+	CreatedAt: string;
+};
+
+export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section, Publication };

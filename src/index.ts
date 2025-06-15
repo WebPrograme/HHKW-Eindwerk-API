@@ -19,12 +19,14 @@ import blog from './routes/blog';
 import form from './routes/form';
 import contact from './routes/contact';
 import home from './routes/home';
+import publications from './routes/publications';
 
 app.use('/api/archive', archive);
 app.use('/api/blog', blog);
 app.use('/api/form', form);
 app.use('/api/contact', contact);
 app.use('/api/home', home);
+app.use('/api/publications', publications);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
