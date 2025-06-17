@@ -44,6 +44,12 @@ type Form = {
 	Message: string;
 };
 
+type NewsletterSubscription = {
+	Email: string;
+	CreatedAt: string;
+	ID: string;
+};
+
 type Section = {
 	ID: string;
 	Title: string;
@@ -63,7 +69,7 @@ type Publication = {
 	CreatedAt: string;
 };
 
-type LogCollection = 'BlogArticles' | 'BlogEvents' | 'ArchiveArticles' | 'Sections' | 'Publications';
+type LogCollection = 'BlogArticles' | 'BlogEvents' | 'ArchiveArticles' | 'Sections' | 'Publications' | 'Forms' | 'NewsletterSubscriptions';
 
 type LogEntry = {
 	CreatedAt: FirebaseFirestore.Timestamp;
@@ -74,4 +80,4 @@ type LogEntry = {
 	DeepInfo?: Record<string, any>;
 };
 
-export { Output, BlogArticle, BlogEvent, ArchiveArticle, Form, Section, Publication, LogEntry, LogCollection };
+export { Output, BlogArticle, BlogEvent, ArchiveArticle, Form, NewsletterSubscription, Section, Publication, LogEntry, LogCollection };

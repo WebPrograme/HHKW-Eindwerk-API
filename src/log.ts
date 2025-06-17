@@ -36,6 +36,13 @@ const addLog = async (action: string, description: string, deepInfo: {} = {}, re
 		case 'Publicatie Verwijderd':
 			collection = 'Publications';
 			break;
+		case 'Formulier Ingediend':
+			collection = 'Forms';
+			break;
+		case 'Newsletter Geabonneerd':
+		case 'Newsletter Afgemeld':
+			collection = 'NewsletterSubscriptions';
+			break;
 		default:
 			throw new Error(`Unknown action: ${action}`);
 	}
