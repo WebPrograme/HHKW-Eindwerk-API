@@ -55,14 +55,6 @@ type Section = {
 	Order: number;
 };
 
-type HomeBlock = {
-	Order: number;
-	Title: string;
-	Description: string;
-	Image: string;
-	Link: string;
-};
-
 type Publication = {
 	ID: string;
 	Title: string;
@@ -71,12 +63,15 @@ type Publication = {
 	CreatedAt: string;
 };
 
+type LogCollection = 'BlogArticles' | 'BlogEvents' | 'ArchiveArticles' | 'Sections' | 'Publications';
+
 type LogEntry = {
-	CreatedAt: string;
-	ExpiryDate: string;
+	CreatedAt: FirebaseFirestore.Timestamp;
+	ExpiryDate: FirebaseFirestore.Timestamp;
+	Collection: LogCollection;
 	Action: string;
 	Description: string;
 	DeepInfo?: Record<string, any>;
 };
 
-export { Output, BlogArticle, BlogEvent, ArchiveArticle, HomeBlock, Form, Section, Publication, LogEntry };
+export { Output, BlogArticle, BlogEvent, ArchiveArticle, Form, Section, Publication, LogEntry, LogCollection };

@@ -6,12 +6,12 @@ const submitForm = async (form: Form) => {
 	postmark.client.sendEmail({
 		From: 'Yarne Gooris <els@hoevelootens.be>',
 		To: 'yarne.gooris@gmail.com',
-		Subject: 'New Form Submission',
-		TextBody: 'Name: ' + form.Name + '\nEmail: ' + form.Email + '\nMessage: ' + form.Message,
+		Subject: 'Nieuw formulier ingediend',
+		TextBody: 'Naam: ' + form.Name + '\nEmail: ' + form.Email + '\nBericht: ' + form.Message,
 		MessageStream: 'outbound',
 	});
 
-	return { status: 200, result: 'Form submitted' };
+	return { status: 200, result: 'Formulier ingediend' };
 };
 
 export default { submitForm };
