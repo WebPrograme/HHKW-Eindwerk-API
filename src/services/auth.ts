@@ -6,7 +6,7 @@ import type { Output } from '../types';
 const validateToken = async (token: string): Promise<Output> => {
 	const result = await signInWithCredential(auth, GoogleAuthProvider.credential(token));
 
-	if (result.user.email === 'yarne.gooris@gmail.com') return { status: 200, result: result.user };
+	if (result.user.email === 'yarne.gooris@gmail.com' || result.user.email === 'SHermans@cvodeverdieping.be') return { status: 200, result: result.user };
 	return { status: 401, result: 'Unauthorized' };
 };
 

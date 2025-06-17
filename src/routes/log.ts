@@ -8,5 +8,6 @@ const router = Router();
 // Requests
 router.get('/all', auth.validateToken, logs.getAllLogs); // Get All Logs (Private)
 router.get('/', auth.validateToken, logs.getLogs); // Get Logs with Filtering (Private)
+router.get('/:id', auth.validateToken, logs.getLog); // Get Log by ID (Private)
 
 export default router;
