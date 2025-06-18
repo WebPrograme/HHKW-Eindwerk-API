@@ -11,7 +11,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
 
 	auth.verifyIdToken(uid)
 		.then((result: any) => {
-			if (result.email === 'yarne.gooris@gmail.com') {
+			if (result.email === 'yarne.gooris@gmail.com' || result.email === 'SHermans@cvodeverdieping.be') {
 				req.body.user = result;
 				next();
 			} else {
